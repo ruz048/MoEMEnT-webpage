@@ -45,7 +45,37 @@
   <script src="static/js/index.js"></script>
 
   <style>
-    /* Additional custom styling for the table */
+    .booktabs-table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 0 auto;
+      font-size: 0.9em;
+    }
+    .booktabs-table th,
+    .booktabs-table td {
+      padding: 8px;
+      text-align: center;
+    }
+    /* \toprule effect: Thick line under the header row */
+    .booktabs-table thead tr:first-child th {
+      border-bottom: 2px solid #000;
+    }
+    /* \midrule effect: Thin line under the dataset row */
+    .booktabs-table thead tr:last-child td {
+      border-bottom: 1px solid #000;
+    }
+    /* Remove borders for body cells to keep the clean look */
+    .booktabs-table tbody tr td {
+      border: none;
+    }
+    /* Optional hover effect for body rows */
+    .booktabs-table tbody tr:hover td {
+      background-color: #f9f9f9;
+    }
+    /* \bottomrule effect: Add a thick line at the bottom using tfoot */
+    .booktabs-table tfoot tr td {
+      border-top: 2px solid #000;
+    }
     .dataset {
       font-variant: small-caps;
       font-size: 0.9em;
@@ -161,114 +191,123 @@
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Safety Benchmark</h2>
+    <h2 class="title is-3">Safety Benchmark</h2>
     <div class="has-text-centered">
-      <table class="table is-bordered is-striped is-hoverable" style="width: 90%; margin: 0 auto;">
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Email</th>
-            <th>Table</th>
-            <th>Abstract</th>
-            <th>Code</th>
-          </tr>
-          <tr>
-            <td class="dataset">Dataset Size</td>
-            <td class="dataset">11,250</td>
-            <td class="dataset">22,500</td>
-            <td class="dataset">22,500</td>
-            <td class="dataset">7,500</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GPT-4 + No Defense</td>
-            <td>14.30</td>
-            <td>34.52</td>
-            <td>25.40</td>
-            <td>1.96</td>
-          </tr>
-          <tr>
-            <td>GPT-4 + Datamark</td>
-            <td>7.03</td>
-            <td>10.83</td>
-            <td>23.64</td>
-            <td>4.57</td>
-          </tr>
-          <tr>
-            <td>GPT-4 + Ignoring</td>
-            <td>10.55</td>
-            <td>29.76</td>
-            <td>23.00</td>
-            <td>0.10</td>
-          </tr>
-          <tr>
-            <td>GPT-4 + Base64</td>
-            <td>3.40</td>
-            <td>10.40</td>
-            <td>8.66</td>
-            <td>0.15</td>
-          </tr>
-          <tr>
-            <td>GPT-4 + Caesar</td>
-            <td style="color: olive;">2.20</td>
-            <td style="color: red;">1.66</td>
-            <td style="color: red;">5.83</td>
-            <td style="color: red;">0</td>
-          </tr>
-          <tr>
-            <td>GPT-4 + Ours</td>
-            <td style="color: red;">1.20</td>
-            <td style="color: olive;">3.75</td>
-            <td style="color: olive;">6.79</td>
-            <td style="color: olive;">0.07</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + No Defense</td>
-            <td>12.00</td>
-            <td>36.80</td>
-            <td>26.00</td>
-            <td>7.59</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + Datamark</td>
-            <td>9.75</td>
-            <td>13.79</td>
-            <td>22.67</td>
-            <td>5.67</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + Ignoring</td>
-            <td>7.17</td>
-            <td>24.25</td>
-            <td>14.06</td>
-            <td>6.41</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + Base64</td>
-            <td style="color: olive;">1.90</td>
-            <td style="color: olive;">1.40</td>
-            <td style="color: olive;">5.70</td>
-            <td style="color: red;">0</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + Caesar</td>
-            <td>3.90</td>
-            <td>11.10</td>
-            <td>12.00</td>
-            <td style="color: red;">0</td>
-          </tr>
-          <tr>
-            <td>GPT-4o + Ours</td>
-            <td style="color: red;">1.50</td>
-            <td style="color: red;">1.00</td>
-            <td style="color: red;">1.00</td>
-            <td style="color: red;">0</td>
-          </tr>
-        </tbody>
-      </table>
+      <center>
+        <table class="booktabs-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Email</th>
+              <th>Table</th>
+              <th>Abstract</th>
+              <th>Code</th>
+            </tr>
+            <tr>
+              <td class="dataset">Dataset Size</td>
+              <td class="dataset">11,250</td>
+              <td class="dataset">22,500</td>
+              <td class="dataset">22,500</td>
+              <td class="dataset">7,500</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GPT-4 + No Defense</td>
+              <td>14.30</td>
+              <td>34.52</td>
+              <td>25.40</td>
+              <td>1.96</td>
+            </tr>
+            <tr>
+              <td>GPT-4 + Datamark</td>
+              <td>7.03</td>
+              <td>10.83</td>
+              <td>23.64</td>
+              <td>4.57</td>
+            </tr>
+            <tr>
+              <td>GPT-4 + Ignoring</td>
+              <td>10.55</td>
+              <td>29.76</td>
+              <td>23.00</td>
+              <td>0.10</td>
+            </tr>
+            <tr>
+              <td>GPT-4 + Base64</td>
+              <td>3.40</td>
+              <td>10.40</td>
+              <td>8.66</td>
+              <td>0.15</td>
+            </tr>
+            <tr>
+              <td>GPT-4 + Caesar</td>
+              <td style="color: olive;">2.20</td>
+              <td style="color: red;">1.66</td>
+              <td style="color: red;">5.83</td>
+              <td style="color: red;">0</td>
+            </tr>
+            <tr>
+              <td>GPT-4 + Ours</td>
+              <td style="color: red;">1.20</td>
+              <td style="color: olive;">3.75</td>
+              <td style="color: olive;">6.79</td>
+              <td style="color: olive;">0.07</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + No Defense</td>
+              <td>12.00</td>
+              <td>36.80</td>
+              <td>26.00</td>
+              <td>7.59</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + Datamark</td>
+              <td>9.75</td>
+              <td>13.79</td>
+              <td>22.67</td>
+              <td>5.67</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + Ignoring</td>
+              <td>7.17</td>
+              <td>24.25</td>
+              <td>14.06</td>
+              <td>6.41</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + Base64</td>
+              <td style="color: olive;">1.90</td>
+              <td style="color: olive;">1.40</td>
+              <td style="color: olive;">5.70</td>
+              <td style="color: red;">0</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + Caesar</td>
+              <td>3.90</td>
+              <td>11.10</td>
+              <td>12.00</td>
+              <td style="color: red;">0</td>
+            </tr>
+            <tr>
+              <td>GPT-4o + Ours</td>
+              <td style="color: red;">1.50</td>
+              <td style="color: red;">1.00</td>
+              <td style="color: red;">1.00</td>
+              <td style="color: red;">0</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </center>
+      
     </div>
     <div class="has-text-centered">
       <p>
@@ -287,7 +326,7 @@
         zhang2025defense,
         title={Defense against Prompt Injection Attacks via Mixture of Encodings},
         author={Ruiyi Zhang and David Sullivan and Kyle Jackson and Pengtao Xie and Mei Chen},
-        booktitle={2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics},
+        booktitle={Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL)},
         year={2025}
         }
       </code></pre>
