@@ -119,18 +119,15 @@
   </div>
 </section>
 <!-- End paper abstract -->
-
-
 <section class="section is-small">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full">
         <div class="content">
-          <h2 class="title is-3">Example of Prompt Injection Attack</h2>
-          <center>
-            <embed src="static/images/pija.pdf" type="application/pdf" style="width: 50%; aspect-ratio: auto;" />
-
-          </center>
+          <h2 class="title is-3">Our Method</h2>
+          <div class="has-text-centered">
+            <img src="static/images/pija.png" alt="Example of Prompt Injection Attack" style="width: 50%;"/>
+          </div>
           <div class="level-set has-text-justified">
             <p>
               Example of prompt injection attack. Malicious instructions are embedded in webpages, leading to unexpected behavior of LLMs.
@@ -148,9 +145,9 @@
       <div class="column is-full">
         <div class="content">
           <h2 class="title is-3">Our Method</h2>
-          <center>
-            <embed src="static/images/flowchart.pdf" type="application/pdf" style="width: 90%; aspect-ratio: auto;"/>
-          </center>
+          <div class="has-text-centered">
+            <img src="static/images/flowchart.png" alt="Flowchart of Our Method" style="width: 90%;"/>
+          </div>
           <div class="level-set has-text-justified">
             <p>
               An overview of the mixture of encodings defense against prompt injection attacks. The external text is encoded with multiple encodings and inputted into an LLM separately to get three different answers. Based on these answers, the LLM then generates the final output.
@@ -161,114 +158,115 @@
     </div>
   </div>
 </section>
-
 <section class="section">
-  <div class="container">
+  <div class="container is-max-desktop">
     <h2 class="title is-4 has-text-centered">Safety Benchmark</h2>
-    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-      <thead>
-        <tr>
-          <th>Method</th>
-          <th>Email</th>
-          <th>Table</th>
-          <th>Abstract</th>
-          <th>Code</th>
-        </tr>
-        <tr>
-          <td class="dataset">Dataset Size</td>
-          <td class="dataset">11,250</td>
-          <td class="dataset">22,500</td>
-          <td class="dataset">22,500</td>
-          <td class="dataset">7,500</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GPT-4 + No Defense</td>
-          <td>14.30</td>
-          <td>34.52</td>
-          <td>25.40</td>
-          <td>1.96</td>
-        </tr>
-        <tr>
-          <td>GPT-4 + Datamark</td>
-          <td>7.03</td>
-          <td>10.83</td>
-          <td>23.64</td>
-          <td>4.57</td>
-        </tr>
-        <tr>
-          <td>GPT-4 + Ignoring</td>
-          <td>10.55</td>
-          <td>29.76</td>
-          <td>23.00</td>
-          <td>0.10</td>
-        </tr>
-        <tr>
-          <td>GPT-4 + Base64</td>
-          <td>3.40</td>
-          <td>10.40</td>
-          <td>8.66</td>
-          <td>0.15</td>
-        </tr>
-        <tr>
-          <td>GPT-4 + Caesar</td>
-          <td style="color: olive;">2.20</td>
-          <td style="color: red;">1.66</td>
-          <td style="color: red;">5.83</td>
-          <td style="color: red;">0</td>
-        </tr>
-        <tr>
-          <td>GPT-4 + Ours</td>
-          <td style="color: red;">1.20</td>
-          <td style="color: olive;">3.75</td>
-          <td style="color: olive;">6.79</td>
-          <td style="color: olive;">0.07</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + No Defense</td>
-          <td>12.00</td>
-          <td>36.80</td>
-          <td>26.00</td>
-          <td>7.59</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + Datamark</td>
-          <td>9.75</td>
-          <td>13.79</td>
-          <td>22.67</td>
-          <td>5.67</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + Ignoring</td>
-          <td>7.17</td>
-          <td>24.25</td>
-          <td>14.06</td>
-          <td>6.41</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + Base64</td>
-          <td style="color: olive;">1.90</td>
-          <td style="color: olive;">1.40</td>
-          <td style="color: olive;">5.70</td>
-          <td style="color: red;">0</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + Caesar</td>
-          <td>3.90</td>
-          <td>11.10</td>
-          <td>12.00</td>
-          <td style="color: red;">0</td>
-        </tr>
-        <tr>
-          <td>GPT-4o + Ours</td>
-          <td style="color: red;">1.50</td>
-          <td style="color: red;">1.00</td>
-          <td style="color: red;">1.00</td>
-          <td style="color: red;">0</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="has-text-centered">
+      <table class="table is-bordered is-striped is-hoverable" style="width: 90%; margin: 0 auto;">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Email</th>
+            <th>Table</th>
+            <th>Abstract</th>
+            <th>Code</th>
+          </tr>
+          <tr>
+            <td class="dataset">Dataset Size</td>
+            <td class="dataset">11,250</td>
+            <td class="dataset">22,500</td>
+            <td class="dataset">22,500</td>
+            <td class="dataset">7,500</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-4 + No Defense</td>
+            <td>14.30</td>
+            <td>34.52</td>
+            <td>25.40</td>
+            <td>1.96</td>
+          </tr>
+          <tr>
+            <td>GPT-4 + Datamark</td>
+            <td>7.03</td>
+            <td>10.83</td>
+            <td>23.64</td>
+            <td>4.57</td>
+          </tr>
+          <tr>
+            <td>GPT-4 + Ignoring</td>
+            <td>10.55</td>
+            <td>29.76</td>
+            <td>23.00</td>
+            <td>0.10</td>
+          </tr>
+          <tr>
+            <td>GPT-4 + Base64</td>
+            <td>3.40</td>
+            <td>10.40</td>
+            <td>8.66</td>
+            <td>0.15</td>
+          </tr>
+          <tr>
+            <td>GPT-4 + Caesar</td>
+            <td style="color: olive;">2.20</td>
+            <td style="color: red;">1.66</td>
+            <td style="color: red;">5.83</td>
+            <td style="color: red;">0</td>
+          </tr>
+          <tr>
+            <td>GPT-4 + Ours</td>
+            <td style="color: red;">1.20</td>
+            <td style="color: olive;">3.75</td>
+            <td style="color: olive;">6.79</td>
+            <td style="color: olive;">0.07</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + No Defense</td>
+            <td>12.00</td>
+            <td>36.80</td>
+            <td>26.00</td>
+            <td>7.59</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + Datamark</td>
+            <td>9.75</td>
+            <td>13.79</td>
+            <td>22.67</td>
+            <td>5.67</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + Ignoring</td>
+            <td>7.17</td>
+            <td>24.25</td>
+            <td>14.06</td>
+            <td>6.41</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + Base64</td>
+            <td style="color: olive;">1.90</td>
+            <td style="color: olive;">1.40</td>
+            <td style="color: olive;">5.70</td>
+            <td style="color: red;">0</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + Caesar</td>
+            <td>3.90</td>
+            <td>11.10</td>
+            <td>12.00</td>
+            <td style="color: red;">0</td>
+          </tr>
+          <tr>
+            <td>GPT-4o + Ours</td>
+            <td style="color: red;">1.50</td>
+            <td style="color: red;">1.00</td>
+            <td style="color: red;">1.00</td>
+            <td style="color: red;">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p class="has-text-centered">
       <strong>Safety Benchmark.</strong> Attack success rate when applying different defense methods on 4 prompt injection attack datasets (Email, Table, Abstract and Code), using two cutting-edge large language models (GPT-4 and GPT-4o). The best results are shown in <strong style="color: red;">red</strong>, and the second best results are shown in <strong style="color: olive;">olive</strong>.
     </p>
