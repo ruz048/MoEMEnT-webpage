@@ -47,9 +47,9 @@
   <style>
     .booktabs-table {
       border-collapse: collapse;
-      width: 90%;
+      width: 70%;
       margin: 0 auto;
-      font-size: 0.9em;
+      font-size: 1.2em;
     }
     .booktabs-table th,
     .booktabs-table td {
@@ -58,11 +58,11 @@
     }
     /* \toprule effect: Thick line under the header row */
     .booktabs-table thead tr:first-child th {
-      border-bottom: 2px solid #000;
+      border-bottom: 3px solid #000;
     }
     /* \midrule effect: Thin line under the dataset row */
     .booktabs-table thead tr:last-child td {
-      border-bottom: 1px solid #000;
+      border-bottom: 2px solid #000;
     }
     /* Remove borders for body cells to keep the clean look */
     .booktabs-table tbody tr td {
@@ -74,11 +74,11 @@
     }
     /* \bottomrule effect: Add a thick line at the bottom using tfoot */
     .booktabs-table tfoot tr td {
-      border-top: 2px solid #000;
+      border-top: 3px solid #000;
     }
     .dataset {
       font-variant: small-caps;
-      font-size: 0.9em;
+      font-size: 1.2em;
     }
   </style>
 
@@ -157,13 +157,13 @@
           <h2 class="title is-3">Example of Prompt Injection Attack</h2>
           <center>
             <div class="has-text-centered">
-              <img src="static/images/pija.png" alt="Example of Prompt Injection Attack" style="width: 50%;"/>
+              <img src="static/images/pija.png" alt="Example of Prompt Injection Attack" style="width: 40%;"/>
             </div>
           </center>
           
           <div class="level-set has-text-justified">
             <p>
-              Example of prompt injection attack. Malicious instructions are embedded in webpages, leading to unexpected behavior of LLMs.
+              Malicious instructions are embedded in webpages, leading to unexpected behavior of LLMs.
             </p>
           </div>
         </div>
@@ -205,13 +205,6 @@
               <th>Table</th>
               <th>Abstract</th>
               <th>Code</th>
-            </tr>
-            <tr>
-              <td class="dataset">Dataset Size</td>
-              <td class="dataset">11,250</td>
-              <td class="dataset">22,500</td>
-              <td class="dataset">22,500</td>
-              <td class="dataset">7,500</td>
             </tr>
           </thead>
           <tbody>
@@ -256,6 +249,9 @@
               <td style="color: olive;">3.75</td>
               <td style="color: olive;">6.79</td>
               <td style="color: olive;">0.07</td>
+            </tr>
+            <tr class="midrule">
+              <td colspan="5"></td>
             </tr>
             <tr>
               <td>GPT-4o + No Defense</td>
@@ -321,15 +317,13 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>
-        @inproceedings{
+      <pre><code>@inproceedings{
         zhang2025defense,
         title={Defense against Prompt Injection Attacks via Mixture of Encodings},
         author={Ruiyi Zhang and David Sullivan and Kyle Jackson and Pengtao Xie and Mei Chen},
         booktitle={Annual Conference of the Nations of the Americas Chapter of the ACL (NAACL)},
         year={2025}
-        }
-      </code></pre>
+        }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
