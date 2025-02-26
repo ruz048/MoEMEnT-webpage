@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description"
+    content="Hummingbird aligns generated image with multimodal context input (reference image + text guidance) ensuring the synthetic image is diverse w.r.t. reference image while exhibiting high fidelity.">
+  <meta property="og:title" content="Hummingbird: High Fidelity Image Generation via Multimodal Context Alignment" />
+  <meta property="og:description"
+    content="Hummingbird aligns generated image with multimodal context input (reference image + text guidance) ensuring the synthetic image is diverse w.r.t. reference image while exhibiting high fidelity." />
+  <meta property="og:url" content="https://minhquanlecs.github.io/hummingbird" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/hummingbird.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="Hummingbird: High Fidelity Image Generation via Multimodal Context Alignment">
+  <meta name="twitter:description"
+    content="Hummingbird aligns generated image with multimodal context input (reference image + text guidance) ensuring the synthetic image is diverse w.r.t. reference image while exhibiting high fidelity.">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/hummingbird.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="Diffusion models, MLLMs, Multimodal, Alignment">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Hummingbird</title>
+  <link rel="icon" type="image/x-icon" href="static/images/hummingbird-icon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Hummingbird<img src="static/images/hummingbird-icon.ico"
+                alt="Hummingbird Icon" class="title-icon">: High Fidelity
+              Image Generation via Multimodal
+              Context Alignment</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://minhquanlecs.github.io" target="_blank">Minh-Quan Le</a><sup>1,2*</sup>,</span>
+              <span class="author-block">
+                <a href="https://g1910.github.io" target="_blank">Gaurav Mittal</a><sup>1,*</sup>,</span>
+              <span class="author-block">
+                <a href="https://mengtianjian.github.io" target="_blank">Tianjian Meng</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://sites.google.com/view/asmiftekhar/home" target="_blank">A S M
+                  Iftekhar</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=qIpeu7oAAAAJ&hl=en" target="_blank">Vishwas
+                  Suryanarayanan</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=Gwg25AkAAAAJ&hl=en" target="_blank">Barun
+                  Patra</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www3.cs.stonybrook.edu/~samaras/" target="_blank">Dimitris
+                  Samaras</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.microsoft.com/en-us/research/people/meic/"
+                  target="_blank">Mei
+                  Chen</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Microsoft,</span>
+              <span class="author-block"><sup>2</sup>Stony Brook University</span>
+              <span class="eql-cntrb"><br><b>ICLR 2025</b></span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://openreview.net/forum?id=6kPBThI6ZJ" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block">
+                  <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Supplementary</span>
+                  </a>
+                </span> -->
+
+                <!-- Github link -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+
+                <!-- ArXiv abstract Link -->
+                <!-- <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <center>
+          <img src="static/images/teaser_comparison_v1.png" class="center-image" />
+        </center>
+        <h2 class="subtitle has-text-centered">
+          <div class="content has-text-justified">
+            <p>Hummingbird aligns generated image with multimodal context input (reference image + text guidance)
+              ensuring
+              the synthetic image is diverse w.r.t. reference image while exhibiting high fidelity (i.e. preserves the
+              scene
+              attribute from reference image in relation to text guidance). (a-f) By doing so, for VQA and HOI
+              Reasoning,
+              Hummingbird enables the answer to the question in the text guidance to remain consistent between the
+              reference
+              and generated images. (g) Hummingbird is also able to preserve both diversity and fidelity without the
+              trade-off exhibited by existing methods.</p>
+          </div>
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- <section class="section is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Inference Overview</h2>
+            <center>
+            <img src="static/images/architecture_applications_extended.png" alt="Inference Overview" class="center-image"/>
+            </center>
+            <div class="level-set has-text-justified">
+              <p>
+                Hummingbird aligns generated image with multimodal context input (reference image + text guidance) ensuring the synthetic image is diverse w.r.t.~reference image while exhibiting high fidelity (i.e.~preserves the scene attribute from reference image in relation to text guidance). (a-f) By doing so, for VQA and HOI Reasoning, Hummingbird enables the answer to the question in the text guidance to remain consistent between the reference and generated images. (g) Hummingbird is also able to preserve both diversity and fidelity without the trade-off exhibited by existing methods.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              While diffusion models are powerful in generating high-quality, diverse synthetic data for object-centric
+              tasks, existing methods struggle with scene-aware tasks such as Visual Question Answering (VQA) and
+              Human-Object Interaction (HOI) Reasoning, where it is critical to preserve scene attributes in generated
+              images consistent with a multimodal context, i.e.~a reference image with accompanying text guidance query.
+              To address this, we introduce <b>Hummingbird</b>, the first diffusion-based image generator which, given
+              a multimodal context, generates highly diverse images w.r.t. the reference image while ensuring high
+              fidelity by accurately preserving scene attributes, such as object interactions and spatial relationships
+              from the text guidance. Hummingbird employs a novel Multimodal Context Evaluator that simultaneously
+              optimizes our formulated Global Semantic and Fine-grained Consistency Rewards to ensure generated images
+              preserve the scene attributes of reference images in relation to the text guidance while maintaining
+              diversity. As the first model to address the task of maintaining both diversity and fidelity given a
+              multimodal context, we introduce a new benchmark formulation incorporating MME Perception and Bongard HOI
+              datasets. Benchmark experiments show that Hummingbird outperforms all existing methods by achieving
+              superior fidelity while maintaining diversity, validating Hummingbird's potential as a robust multimodal
+              context-aligned image generator in complex visual tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="section is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Method Overview</h2>
+            <center>
+              <img src="static/images/framework-v5.png" alt="Method Overview" class="center-image" />
+            </center>
+            <div class="level-set has-text-justified">
+              <p>
+                Given text guidance \( \mathbf{g} \) and reference image \( \mathbf{x} \) (multimodal context \(
+                \mathcal{M} \)),
+                <i>Hummingbird</i> crafts an instruction prompt \( p \) to feed to MLLM and obtain Context Description
+                \(
+                \mathcal{C} \).
+                It then embeds \( \mathbf{x} \) and \( \mathcal{C} \) via CLIP to feed to the UNet Denoiser of SDXL to
+                generate
+                image \( \mathbf{\hat{x}} \). To improve the fidelity of \( \mathbf{\hat{x}} \) with respect to \(
+                \mathcal{M} \)
+                while preserving diversity, Hummingbird introduced a Multimodal Context Evaluator to simultaneously
+                maximize
+                novel rewards - Global Semantic and Fine-Grained Consistency Rewards - to align \( \mathbf{\hat{x}} \)
+                with
+                scene attributes provided in \( \mathcal{M} \).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Fine-tuning with Multimodal Context Rewards</h2>
+            <center>
+              <img src="static/images/qformer-v5.png" alt="Fine-tuning with Multimodal Context Rewards"
+                class="center-image blend-img-background" />
+            </center>
+            <div class="level-set has-text-justified">
+              <p>
+                Hummingbird's Multimodal Context Evaluator leverages pre-trained BLIP-2 QFormer. It simultaneously
+                maximizes our novel Global Semantic and Fine-grained Consistency Rewards to align generated image \(
+                \mathbf{\hat{x}} \) with Content Description \( \mathcal{C} \) corresponding to multimodal context \(
+                \mathcal{M} \).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container  is-max-desktop">
+        <h2 class="title is-3">Qualitative Comparison with SOTA Methods</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture1.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture2.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture3.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture4.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture5.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture6.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture7.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Comparison/Picture8.png" alt="MY ALT TEXT" />
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered">
+          <div class="content has-text-justified">
+            <p>Generated image comparison between Hummingbird and SOTA methods on MME Perception and HOI Reasoning.
+              Hummingbird achieves highest fidelity while maintaining high diversity.</p>
+          </div>
+        </h2>
+      </div>
+  </section>
+
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container  is-max-desktop">
+        <h2 class="title is-3">Diversity Analysis</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture1.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture2.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture3.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture4.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture5.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture6.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture7.png" alt="MY ALT TEXT" />
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/Diversity/Picture8.png" alt="MY ALT TEXT" />
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered">
+          <div class="content has-text-justified">
+            <p>Hummingbird exhibits high diversity across different random seeds while producing high-fidelity images
+              each time w.r.t multimodal context (reference image + text guidance).</p>
+          </div>
+        </h2>
+      </div>
+  </section>
+  <!-- Paper poster -->
+  <!-- <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title">Poster</h2>
+
+        <iframe src="static/pdfs/sample.pdf" width="100%" height="550">
+        </iframe>
+
+      </div>
+    </div>
+  </section> -->
+  <!--End paper poster -->
+
+  <section class="section is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Effectiveness of Fine-tuning</h2>
+            <center>
+              <img src="static/images/trainingprogress.png" alt="Effectiveness of Fine-tuning" class="center-image" />
+            </center>
+            <div class="level-set has-text-justified">
+              <p>Fine-tuning with Multimodal Context Rewards improves fidelity in generated images.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{
+        le2025hummingbird,
+        title={Hummingbird: High Fidelity Image Generation via Multimodal Context Alignment},
+        author={Minh-Quan Le and Gaurav Mittal and Tianjian Meng and A S M Iftekhar and Vishwas
+          Suryanarayanan and Barun Patra and Dimitris Samaras and Mei Chen},
+        booktitle={The Thirteenth International Conference on Learning Representations},
+        year={2025},
+        url={https://openreview.net/forum?id=6kPBThI6ZJ}
+        }</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the
+              footer. <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
